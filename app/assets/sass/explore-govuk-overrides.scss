@@ -59,14 +59,14 @@ $govuk-secondary-text-colour: #505a5f;
 //   text-decoration-thickness: $govuk-link-underline-thickness !important;
 // }
 
-$govuk-header-link-underline-thickness: 3px;
+// $govuk-header-link-underline-thickness: 3px;
 
-  .govuk-header__link--homepage {
-    a {
-      &:hover,
-      &:active {
-        margin-bottom: $govuk-header-link-underline-thickness * -1 !important;
-        border-bottom: $govuk-header-link-underline-thickness solid !important;
-      }
-    }
-  }
+//   .govuk-header__link--homepage {
+//     a {
+//       &:hover,
+//       &:active {
+//         margin-bottom: $govuk-header-link-underline-thickness * -1 !important;
+//         border-bottom: $govuk-header-link-underline-thickness solid !important;
+//       }
+//     }
+//   }
