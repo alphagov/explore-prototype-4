@@ -720,9 +720,19 @@ $font: "GDS Transport", nta, Arial, sans-serif;
             vertical-align: top;
             li {
               margin-bottom: 30px;
+              display: block;
+
+              $govuk-header-link-underline-thickness: 3px !default;
+
+              a {
+                margin-bottom: $govuk-header-link-underline-thickness * -1;
+                border-bottom: $govuk-header-link-underline-thickness solid;
+                width: fit-content;
+              }
+
               a:link, a:visited {
                 font-size: 16px;
-                display: block;
+                display: inline;
               }
             }
             li div, li p {
