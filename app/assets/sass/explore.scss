@@ -383,6 +383,13 @@ $wide-width: 1300px;
     margin-top: 50px;
   }
 
+  // Override footer links
+  #footer {
+    a:hover {
+      text-decoration-thickness: $govuk-link-underline-thickness * 3;
+    }
+  }
+
   // govuk accordion overrides
 
   .gem-c-accordion__section-content {
