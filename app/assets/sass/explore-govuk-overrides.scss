@@ -46,27 +46,21 @@ $govuk-secondary-text-colour: #505a5f;
 // Links
 // taken from https://github.com/alphagov/govuk-frontend/pull/2183/files
 
-// $govuk-link-underline-thickness: 0.0625rem !default;
-// $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
-// $govuk-link-underline-offset: 0.1em !default;
-// $govuk-text-colour: govuk-colour("black") !default;
+$govuk-link-underline-thickness: 0.0625rem !default;
+$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+$govuk-link-underline-offset: 0.1em !default;
+$govuk-text-colour: govuk-colour("black") !default;
 
+/*
+a:link {
+  text-decoration: underline;
+  text-underline-offset: $govuk-link-underline-offset;
+  text-decoration-thickness: $govuk-link-underline-thickness;
+}
+*/
 
+/*
+margin-bottom: $govuk-header-link-underline-thickness * -1;
+border-bottom: $govuk-header-link-underline-thickness solid;
+*/
 
-// a:link {
-//   text-decoration: underline !important;
-//   text-underline-offset: $govuk-link-underline-offset !important;
-//   text-decoration-thickness: $govuk-link-underline-thickness !important;
-// }
-
-// $govuk-header-link-underline-thickness: 3px;
-
-//   .govuk-header__link--homepage {
-//     a {
-//       &:hover,
-//       &:active {
-//         margin-bottom: $govuk-header-link-underline-thickness * -1 !important;
-//         border-bottom: $govuk-header-link-underline-thickness solid !important;
-//       }
-//     }
-//   }
