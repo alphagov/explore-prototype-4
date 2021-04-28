@@ -306,6 +306,11 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   .xpl-accordion__section-heading {
     button {
       border-bottom: $govuk-link-underline-thickness solid;
+
+      &:hover {
+        margin-bottom: $govuk-heavy-link-underline-thickness * -0.75;
+        border-bottom: $govuk-heavy-link-underline-thickness solid;
+      }
     }
 
     a {
