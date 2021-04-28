@@ -303,6 +303,11 @@ $font: "GDS Transport", nta, Arial, sans-serif;
     }
   }
 
+  // New link styles for menu in mobile view
+  .govuk-header__menu-button:hover {
+    text-decoration-thickness: $govuk-heavy-link-underline-thickness;
+  }
+
   .xpl-accordion__section-heading {
     button {
       border-bottom: $govuk-link-underline-thickness solid;
@@ -311,8 +316,24 @@ $font: "GDS Transport", nta, Arial, sans-serif;
         margin-bottom: $govuk-heavy-link-underline-thickness * -0.75;
         border-bottom: $govuk-heavy-link-underline-thickness solid;
       }
+
+      &:focus {
+        margin-bottom: 0;
+        border-bottom: 0;
+      }
     }
 
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: $govuk-link-underline-thickness;
+
+      &:hover {
+        text-decoration-thickness: $govuk-link-underline-thickness *3;
+      }
+    }
+  }
+
+  .xpl-accordion__section-content {
     a {
       text-decoration: underline;
       text-decoration-thickness: $govuk-link-underline-thickness;
@@ -738,6 +759,11 @@ $font: "GDS Transport", nta, Arial, sans-serif;
               color: $link-hover-colour;
               border-bottom: $govuk-heavy-link-underline-thickness solid;
             }
+
+            // &:focus {
+            //   margin-bottom: 0;
+            //   border-bottom: 0;
+            // }
           }
 
           .xpl-minor-item {
