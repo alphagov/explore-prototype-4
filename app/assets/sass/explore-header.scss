@@ -9,7 +9,7 @@ $link-hover-colour: #003078;
 $menu-hover-colour: #005ff8;
 
 $govuk-link-underline-thickness: 0.0625rem !default;
-$govuk-header-link-underline-thickness: $govuk-link-underline-thickness * 3;
+$govuk-heavy-link-underline-thickness: $govuk-link-underline-thickness * 3;
 $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
 $govuk-link-underline-offset: 0.1em !default;
 $govuk-text-colour: govuk-colour("black") !default;
@@ -87,8 +87,8 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   a.govuk-header__link--homepage {
     &:hover,
     &:active {
-      margin-bottom: $govuk-header-link-underline-thickness * -1;
-      border-bottom: $govuk-header-link-underline-thickness solid;
+      margin-bottom: $govuk-heavy-link-underline-thickness * -1;
+      border-bottom: $govuk-heavy-link-underline-thickness solid;
     }
   }
 
@@ -708,13 +708,19 @@ $font: "GDS Transport", nta, Arial, sans-serif;
             padding-top: 0;
           }
 
-          a:link {
-            font-weight: bold;
+          a {
+            border-bottom: $govuk-link-underline-thickness solid;
+
+            &:link {
+              font-weight: bold;
+            }
+
+            &:hover {
+              color: $link-hover-colour;
+              border-bottom: $govuk-heavy-link-underline-thickness solid;
+            }
           }
 
-          a:hover {
-            color: $link-hover-colour;
-          }
           .xpl-minor-item {
             border-top: 1px solid $govuk-border-colour;
             padding-top: 30px;
@@ -726,27 +732,6 @@ $font: "GDS Transport", nta, Arial, sans-serif;
             li {
               margin-bottom: 30px;
               display: block;
-
-              $govuk-header-link-underline-thickness: 3px !default;
-
-              a {
-                margin-bottom: $govuk-header-link-underline-thickness * -1;
-                border-bottom: $govuk-header-link-underline-thickness solid;
-                width: fit-content;
-
-                &:focus,
-                &:active {
-                  text-decoration: none;
-                  color: #0b0c0c;
-                  margin-bottom: $govuk-header-link-underline-thickness;
-                }
-
-                &:link, &:visited {
-                  font-size: 16px;
-                  display: inline;
-                }
-              }
-
             }
             li div, li p {
               color: govuk-colour("black");
@@ -795,13 +780,13 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       display: none;
     }
 
-    $govuk-header-link-underline-thickness: 3px !default;
+    $govuk-heavy-link-underline-thickness: 3px !default;
     .govuk-header__navigation-item {
       &:hover {
         button, a:link, a:visited {
           text-decoration: none;
-          margin-bottom: $govuk-header-link-underline-thickness * -1;
-          border-bottom: $govuk-header-link-underline-thickness solid;
+          margin-bottom: $govuk-heavy-link-underline-thickness * -1;
+          border-bottom: $govuk-heavy-link-underline-thickness solid;
         }
       }
       &.menu-item-open {
