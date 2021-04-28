@@ -138,6 +138,13 @@ $font: "GDS Transport", nta, Arial, sans-serif;
     display: block;
   }
 
+  .govuk-header__navigation-item:hover {
+    button:focus {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
   .xpl-menu__button-back {
     border: 0;
     background: none;
@@ -760,10 +767,10 @@ $font: "GDS Transport", nta, Arial, sans-serif;
               border-bottom: $govuk-heavy-link-underline-thickness solid;
             }
 
-            // &:focus {
-            //   margin-bottom: 0;
-            //   border-bottom: 0;
-            // }
+            &:focus {
+              margin-bottom: 0;
+              border-bottom: 0;
+            }
           }
 
           .xpl-minor-item {
