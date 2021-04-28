@@ -303,6 +303,20 @@ $font: "GDS Transport", nta, Arial, sans-serif;
     }
   }
 
+  .xpl-accordion__section-heading {
+    button {
+      border-bottom: $govuk-link-underline-thickness solid;
+    }
+
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: $govuk-link-underline-thickness;
+
+      &:hover {
+        text-decoration-thickness: $govuk-link-underline-thickness *3;
+      }
+    }
+  }
 
 
   #xpl-popup-menu {
