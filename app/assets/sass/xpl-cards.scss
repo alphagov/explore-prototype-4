@@ -52,6 +52,7 @@ $wide-width: 1000px;
         height: calc(100% - 15px);
         display: block;
         padding-top: 15px;
+        text-decoration: none;
         h3 {
           text-decoration: underline;
         }
@@ -60,7 +61,7 @@ $wide-width: 1000px;
           background: #f3f2f1;
 
           h3 {
-            text-decoration-thickness: $govuk-link-underline-thickness * 3;
+            text-decoration-thickness: $govuk-link-hover-underline-thickness;
           }
         }
         &:focus {
