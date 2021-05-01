@@ -1,17 +1,17 @@
 @import "media-queries";
 @import "sass-mq";
 @import "colour";
-
+@import "xpl-link-styles";
 
 $govuk-link-colour: govuk-colour("blue") !default;
 $govuk-border-colour: govuk-colour("mid-grey");
 $link-hover-colour: #003078;
 $menu-hover-colour: #005ff8;
 
-$govuk-link-underline-thickness: 0.0625rem !default;
-$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
-$govuk-link-underline-offset: 0.1em !default;
-$govuk-text-colour: govuk-colour("black") !default;
+// $govuk-link-underline-thickness: 0.0625rem !default;
+// $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+// $govuk-link-underline-offset: 0.1em !default;
+// $govuk-text-colour: govuk-colour("black") !default;
 
 $mobile-width: 320px;
 $tablet-width: 740px;
@@ -361,12 +361,10 @@ $wide-width: 1300px;
 
 
   a {
-    text-decoration: underline;
-    text-underline-offset: $govuk-link-underline-offset;
-    text-decoration-thickness: $govuk-link-underline-thickness;
+    @extend %xpl-a-link;
 
     &:hover {
-      text-decoration-thickness: $govuk-link-underline-thickness * 3;
+      @extend %xpl-a-hover;
     }
 
     &:focus {
