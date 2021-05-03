@@ -15,6 +15,7 @@ $govuk-text-colour: govuk-colour("black") !default;
   text-decoration: underline;
   text-underline-offset: $govuk-link-underline-offset;
   text-decoration-thickness: $govuk-link-underline-thickness;
+  margin-bottom: 0.15em;
 }
 
 %xpl-a-hover {
