@@ -910,8 +910,14 @@ $font: "GDS Transport", nta, Arial, sans-serif;
         }
       }
       .xpl-frame2 {
-        a:link {
-          color: $govuk-link-colour;
+        a {
+          &:link {
+            color: $govuk-link-colour;
+          }
+
+          &:focus {
+            color: $govuk-link-active-colour;
+          }
         }
       }
     }
