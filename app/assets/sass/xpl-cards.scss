@@ -55,6 +55,7 @@ $wide-width: 1000px;
         text-decoration: none;
         h3 {
           text-decoration: underline;
+          text-decoration-thickness: $govuk-link-underline-thickness;
         }
 
         &:hover {
