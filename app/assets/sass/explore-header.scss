@@ -117,6 +117,12 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       a:link, a:visited {
         font-weight: bold;
         font-size: 18px;
+        margin-bottom: 5px;
+        display: inline-block;
+      }
+
+      a:hover {
+        margin-bottom: $govuk-link-underline-thickness * 3;
       }
     }
   }
