@@ -321,8 +321,8 @@ $wide-width: 1300px;
       border-bottom: $govuk-link-underline-thickness solid;
 
       &:hover {
-        margin-bottom: $govuk-heavy-link-underline-thickness * -1;
-        border-bottom: $govuk-heavy-link-underline-thickness solid;
+        margin-bottom: $govuk-link-underline-thickness * -1;
+        border-bottom: $govuk-link-underline-thickness solid;
       }
     }
   }
