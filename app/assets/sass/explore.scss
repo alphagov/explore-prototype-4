@@ -312,6 +312,21 @@ $wide-width: 1300px;
     margin-top: 30px;
   }
 
+  .home-numbers__link {
+    text-decoration: none;
+    line-height: 1.5;
+
+    .home-numbers__label{
+      margin-bottom: $govuk-link-underline-thickness;
+      border-bottom: $govuk-link-underline-thickness solid;
+
+      &:hover {
+        margin-bottom: $govuk-heavy-link-underline-thickness * -1;
+        border-bottom: $govuk-heavy-link-underline-thickness solid;
+      }
+    }
+  }
+
   .home-numbers {
     &__large {
       font-size: 88px;
