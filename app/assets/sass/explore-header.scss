@@ -611,6 +611,10 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   }
 }
 
+.explore-header .xpl-accordion__section-heading .xpl-accordion__section-button:focus {
+  margin-bottom: govuk-em(1px, 22px);
+}
+
 
 // Desktop
 
@@ -884,6 +888,10 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   }
   .xpl-nav--desktop {
     border: none;
+
+    .xpl-frame2 a:focus {
+      margin-bottom: govuk-em(6px, 18px);
+    }
   }
 
   // Add extra line spacing - using padding because of the accordion markup
@@ -903,6 +911,9 @@ $font: "GDS Transport", nta, Arial, sans-serif;
           color: govuk-colour("black");
         }
       }
+    }
+    .xpl-accordion__section-heading button:focus {
+      margin-bottom: govuk-em(1px, 22px);
     }
     .xpl-nav {
       .govuk-header__navigation-item {
@@ -936,8 +947,4 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       }
     }
   }
-}
-
-.explore-header .xpl-accordion__section-heading button:focus {
-  margin-bottom: govuk-em(1px, 22px);
 }
