@@ -412,6 +412,9 @@ $wide-width: 1300px;
   .gem-c-accordion__section-content {
     a {
       text-decoration: underline;
+      &:hover {
+        text-decoration-thickness: $govuk-link-hover-underline-thickness;
+      }
       &:focus {
         text-decoration: none;
       }
