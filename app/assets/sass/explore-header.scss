@@ -326,7 +326,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       border-bottom: $govuk-link-underline-thickness solid;
 
       &:hover {
-        margin-bottom: $govuk-heavy-link-underline-thickness * -0.75;
+        margin-bottom: $govuk-heavy-link-underline-thickness * -0.5;
         border-bottom: $govuk-heavy-link-underline-thickness solid;
       }
 
