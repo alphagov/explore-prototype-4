@@ -307,7 +307,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
         color: $govuk-link-colour;
       }
       a:focus {
-        color: $govuk-link-active-colour;
+        color: govuk-colour("black");
       }
       p {
         padding-top: 3px;
@@ -936,4 +936,8 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       }
     }
   }
+}
+
+.explore-header .xpl-accordion__section-heading button:focus {
+  margin-bottom: govuk-em(1px, 22px);
 }
