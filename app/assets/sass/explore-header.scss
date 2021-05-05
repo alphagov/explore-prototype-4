@@ -882,6 +882,11 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   .xpl-nav--desktop {
     border: none;
   }
+
+  // Add extra line spacing - using padding because of the accordion markup
+  .xpl-accordion__section-content p {
+    padding-top: 5px;
+  }
 }
 
 @include govuk-media-query ($from: $desktop-width) {
