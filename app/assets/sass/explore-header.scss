@@ -306,6 +306,9 @@ $font: "GDS Transport", nta, Arial, sans-serif;
         font-weight: bold;
         color: $govuk-link-colour;
       }
+      a:focus {
+        color: $govuk-link-active-colour;
+      }
       p {
         padding-top: 3px;
         margin-bottom: 0;
