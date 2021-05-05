@@ -145,6 +145,10 @@ $wide-width: 1300px;
     margin-bottom: 30px;
     padding-bottom: 6px;
 
+    a {
+      text-decoration: none;
+    }
+
     &__chevron {
       background-image: url("/public/images/chevron-right-505a5f.svg");
       float: right;
