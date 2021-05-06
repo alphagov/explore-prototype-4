@@ -346,12 +346,57 @@ $wide-width: 1300px;
     }
   }
 
+  .xpl-topics-page {
+    .xpl-breadcrumb {
+      margin: 0;
+      padding: 0;
+      list-style-position: outside;
+      margin-bottom: govuk-em(30px, 16px);
+
+      li {
+        margin:0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        margin-left: govuk-em(3px, 16px);
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:after {
+           content:"";
+           display:inline-block;
+           top:-1px;
+           bottom:1px;
+           left:-3.31px;
+           width:7px;
+           height:7px;
+           margin:auto 0;
+           -webkit-transform:rotate(45deg);
+           -ms-transform:rotate(45deg);
+           transform:rotate(45deg);
+           border:solid;
+           border-width:1px 1px 0 0;
+           border-color:#f3f2f1;
+        }
+
+        &:last-child {
+          &:after {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
   .govuk-back-link {
     font-size: 18px;
     margin-bottom: 20px;
     margin-top: 0;
-    padding-left: 20px;
+    padding-left: 0;
     background-position: 0 5px;
+    background-image: none;
   }
 
   .inverse-header {
