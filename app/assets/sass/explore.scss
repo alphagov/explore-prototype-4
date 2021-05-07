@@ -358,7 +358,7 @@ $wide-width: 1300px;
         padding: 0;
         list-style: none;
         display: inline-block;
-        margin-left: govuk-em(3px, 16px);
+        margin-left: govuk-em(20px, 16px);
 
         &:first-child {
           margin-left: 0;
@@ -367,9 +367,13 @@ $wide-width: 1300px;
         &:after {
            content:"";
            display:inline-block;
+           position:relative;
            top:-1px;
            bottom:1px;
-           left:-3.31px;
+           left:8px;
+           right: 0;
+          //  margin-left: 12px;
+          //  margin-right: 15px;
            width:7px;
            height:7px;
            margin:auto 0;
