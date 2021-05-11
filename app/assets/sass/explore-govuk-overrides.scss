@@ -5,6 +5,7 @@
  */
 
 @import "colour";
+@import "xpl-link-styles";
 
 $govuk-secondary-text-colour: #505a5f;
 
@@ -19,12 +20,49 @@ $govuk-secondary-text-colour: #505a5f;
   padding: 15px;
   background: govuk-colour("light-grey");
 
-  &__link:link, &__link:visited, &__link:hover, &__link:active, &__link:focus {
-    color: $govuk-secondary-text-colour;
-  }
-
   .govuk-breadcrumbs__list-item {
-    margin-bottom: 0;
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    margin-left: 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      display: inline-block;
+      position: relative;
+      top: -1px;
+      bottom: 1px;
+      left: 8px;
+      right: 0;
+      width: 7px;
+      height: 7px;
+      margin: auto 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      border: solid;
+      border-width: 1px 1px 0 0;
+      // border-color: #f3f2f1;
+    }
+
+    &:last-child {
+      &:after {
+        border: none;
+      }
+    }
+
+    &__link:link, &__link:visited, &__link:hover, &__link:active, &__link:focus {
+      color: $govuk-secondary-text-colour;
+    }
   }
 }
 
@@ -68,23 +106,35 @@ $govuk-secondary-text-colour: #505a5f;
 // Links
 // taken from https://github.com/alphagov/govuk-frontend/pull/2183/files
 
-/*
-$govuk-link-underline-thickness: 0.0625rem !default;
-$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
-$govuk-link-underline-offset: 0.1em !default;
-$govuk-text-colour: govuk-colour("black") !default;
-*/
+// $govuk-link-underline-thickness: 0.0625rem !default;
+// $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+// $govuk-link-underline-offset: 0.1em !default;
+// $govuk-text-colour: govuk-colour("black") !default;
 
-/*
-a:link {
-  text-decoration: underline;
-  text-underline-offset: $govuk-link-underline-offset;
-  text-decoration-thickness: $govuk-link-underline-thickness;
+.explore-body {
+  a {
+    &:link {
+      @extend %xpl-a-link;
+    }
+    &:hover {
+      @extend %xpl-a-hover;
+    }
+  }
+
+  .govuk-breadcrumbs__list-item {
+    a {
+      &:link {
+        @extend %xpl-a-link;
+      }
+
+      &:hover {
+        @extend %xpl-a-hover;
+      }
+    }
+  }
 }
-*/
 
 /*
 margin-bottom: $govuk-heavy-link-underline-thickness * -1;
 border-bottom: $govuk-heavy-link-underline-thickness solid;
 */
-
