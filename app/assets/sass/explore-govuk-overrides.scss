@@ -119,6 +119,13 @@ $govuk-secondary-text-colour: #505a5f;
     &:hover {
       @extend %xpl-a-hover;
     }
+    &:focus {
+      margin-bottom: none;
+    }
+  }
+
+  .explore-header .xpl-nav--desktop .xpl-frame2 .xpl-frame2-inner a:focus {
+    border-bottom: 3px solid !important;
   }
 
   .govuk-breadcrumbs__list-item {
