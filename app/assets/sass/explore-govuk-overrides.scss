@@ -172,3 +172,23 @@ $govuk-secondary-text-colour: #505a5f;
 margin-bottom: $govuk-heavy-link-underline-thickness * -1;
 border-bottom: $govuk-heavy-link-underline-thickness solid;
 */
+
+.gem-c-step-nav-header {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 30px;
+  font-size: 16px;
+
+  @media (min-width: 40.0625em) {
+    font-size: 19px;
+  }
+}
+
+.gem-c-step-nav-header__part-of {
+  font-weight: normal;
+}
+
+.gem-c-title.govuk-\!-margin-top-8 {
+  margin-top: 15px !important;
+}
