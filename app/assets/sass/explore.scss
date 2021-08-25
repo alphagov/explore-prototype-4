@@ -351,7 +351,13 @@ $wide-width: 1300px;
       margin: 0;
       padding: 0;
       list-style-position: outside;
-      margin-bottom: govuk-em(30px, 16px);
+      margin-bottom: govuk-em(25px, 16px);
+      display: flex;
+      @include govuk-clearfix;
+
+      @include govuk-media-query($from: $desktop-width) {
+        display: block;
+      }
 
       li {
         margin:0;
@@ -359,24 +365,26 @@ $wide-width: 1300px;
         list-style: none;
         display: flex;
         position: relative;
-        margin-right: 10px;
-        margin-left: 5px;
-        padding-left: 20px;
+        margin-right: 35px;
+        margin-bottom: 5px;
 
-        &:first-child {
-          margin-left: 0;
-          padding-left: 0;
+        @include govuk-media-query($from: $desktop-width) {
+          float: left;
         }
 
-        &:before {
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:after {
            content:"";
            position:absolute;
            top: 0;
            bottom:0;
-           left: -3.3px;
+           right: -20px;
            width:7px;
            height:7px;
-           margin:auto 0;
+           margin: 7px 0 0;
            -webkit-transform:rotate(45deg);
            -ms-transform:rotate(45deg);
            transform:rotate(45deg);
@@ -385,9 +393,8 @@ $wide-width: 1300px;
            border-color:#f3f2f1;
         }
 
-        &:first-child {
-          display: inline-block;
-          &:before {
+        &:last-child {
+          &:after {
             border: none;
           }
         }
