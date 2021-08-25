@@ -353,7 +353,12 @@ $wide-width: 1300px;
       list-style-position: outside;
       margin-bottom: govuk-em(25px, 16px);
       display: flex;
-      @include govuk-clearfix;
+
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
 
       @include govuk-media-query($from: $desktop-width) {
         display: block;
