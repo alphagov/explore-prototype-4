@@ -8,6 +8,10 @@ $govuk-assets-path: '/govuk/assets/';
 @import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
+@import "patterns/contents-list";
+@import "patterns/metadata";
+@import "patterns/print-link";
+@import "patterns/published-dates";
 @import "patterns/step-by-step-header";
 @import "patterns/step-by-step-nav";
 @import "patterns/step-by-step-related";
@@ -18,7 +22,6 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-
 
 .inverse-header {
   background-color: govuk-colour("blue");
@@ -331,3 +334,5 @@ img {
 @import "explore";
 @import "xpl-tabs";
 @import "xpl-cards";
+@import "xpl-breadcrumbs";
+@import "xpl-part-of";

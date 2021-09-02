@@ -1,0 +1,41 @@
+.app-c-published-dates {
+  direction: ltr;
+  line-height: 1.45em;
+  @include govuk-font(16);
+  margin-bottom: 15px;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 50px;
+  }
+}
+
+.app-c-published-dates__toggle {
+  display: none;
+
+  .js-enabled & {
+    display: inline-block;
+  }
+}
+
+.app-c-published-dates__change-history {
+  margin: 20px 0;
+}
+
+.app-c-published-dates__change-item {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.app-c-published-dates__change-date {
+  display: block;
+  @include govuk-font(16, $weight: bold);
+}
+
+.app-c-published-dates__change-note {
+  white-space: pre-line;
+}
+
+.app-c-published-dates--history {
+  padding-top: govuk-spacing(2);
+  border-top: 1px solid $govuk-border-colour;
+}
