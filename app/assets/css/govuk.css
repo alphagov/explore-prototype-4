@@ -3471,7 +3471,12 @@
  visibility:hidden
 }
 .gem-c-contextual-sidebar__brexit-cta {
- border-top:2px solid #1d70b8
+  margin-bottom: 30px;
+  background-color: #f3f2f1;
+  border-top: 2px solid #ff003b;
+  display: block;
+  padding: 0 15px 15px;
+  text-decoration: none;
 }
 .gem-c-contextual-sidebar__brexit-heading {
  font-family:"GDS transport",Arial,sans-serif;
@@ -3499,6 +3504,21 @@
   font-size:14pt;
   line-height:1.15
  }
+}
+.gem-c-contextual-sidebar__brexit-cta .gem-c-contextual-sidebar__brexit-text {
+  font-family: "nta",arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  margin-bottom: 5px;
+}
+@media (min-width: 40.0625em) {
+  .gem-c-contextual-sidebar__brexit-cta .gem-c-contextual-sidebar__brexit-text {
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }
 .govuk-details {
  font-family:"GDS transport",Arial,sans-serif;

@@ -136,7 +136,8 @@ router.get('/', function (req, res) {
 // ==================================================
 // All other URLs
 
-// Modifies the body of all pages returned from gov.uk to add the Explore elements
+// If content is an "end of journey" content type, return the generic content template
+// Otherwise, modify the body of all pages returned from gov.uk to add the Explore elements
 const augmentedBody = function (req, response, body) {
   const headerTemplate = fs.readFileSync('app/views/explore-header.html', 'utf8')
   const headerString = nunjucks.renderString(headerTemplate, {req})
@@ -169,12 +170,36 @@ const govUkUrl = function (req) {
 }
 
 router.get('/*', function (req,res) {
-  request(govUkUrl(req), function (error, response, body) {
+  const supportedDocumentTypes = [
+    'detailed_guide',
+    'guidance',
+    'guide',
+    'publication',
+    'statutory_guidance',
+  ]
+  const originalUrl = req.originalUrl
+
+  const contentApiUrl = `https://www.gov.uk/api/content/${originalUrl}`
+  request(contentApiUrl, { json: true }, (error, result, body) => {
     if (error) throw error
-    if (response.headers['content-type'].indexOf('application/json') !== -1) {
-      res.json(JSON.parse(body))
+    const contentType = body.document_type
+    
+    if (supportedDocumentTypes.includes(contentType)) {
+      const protoApiUrl = `${API_URL}/generic?slug=${originalUrl}`
+
+      request(protoApiUrl, { json: true }, (error, result, body) => {
+        if (error) throw error
+        res.render('generic_template', body)
+      })
     } else {
-      res.send(augmentedBody(req, response, body))
+      request(govUkUrl(req), function (error, response, body) {
+        if (error) throw error
+        if (response.headers['content-type'].indexOf('application/json') !== -1) {
+          res.json(JSON.parse(body))
+        } else {
+          res.send(augmentedBody(req, response, body))
+        }
+      })
     }
   })
 })

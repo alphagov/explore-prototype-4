@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }} - GOV.UK
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/toggle.js"></script>
+  <script type="text/javascript">
+    var $elements = document.querySelectorAll('[data-module="gem-toggle"]')
+
+    for (var i = 0; i < $elements.length; i++) {
+      new GOVUK.Modules.GemToggle().start([$elements[i]])
+    }
+  </script>
+{% endblock %}
+
+{% block main %}
+  <main id="content" role="main" class="xpl-detailed-guide">
+    <div class="xpl-breadcrumbs">
+      <div class="govuk-width-container xpl-breadcrumbs__inner govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile">
+        <ol class="govuk-breadcrumbs__list">
+          <li class="xpl-breadcrumbs__list-item govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link xpl-breadcrumbs__link" href="/">Home</a>
+          </li>
+          {% if breadcrumbs %}
+            {% for crumb in breadcrumbs %}
+              <li class="xpl-breadcrumbs__list-item govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link xpl-breadcrumbs__link" href="{{ crumb.base_path }}">{{ crumb.title }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ol>
+      </div>
+    </div>
+
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% if part_of_taxon %}
+            <h2 class="xpl-part-of">
+              <span class="xpl-part-of__label">Part of collection</span>
+              <a href="{{ part_of_taxon.base_path }}" class="xpl-part-of__link govuk-link">
+                {{ part_of_taxon.title }}
+              </a>
+            </h2>
+          {% endif %}
+
+          <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-8 govuk-!-padding-top-0">{{ title }}</h1>
+
+          <p class="lede govuk-body-l">
+            <strong>Guidance</strong> &mdash; {{ description }}
+          </p>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="metadata-logo-wrapper">
+          <div class="govuk-grid-column-two-thirds metadata-column">
+            <div class="gem-c-metadata" data-module="gem-toggle">
+              <dl>
+                <dt class="gem-c-metadata__term">From:</dt>
+                <dd class="gem-c-metadata__definition">
+                  {% for org in metadata.from %}
+                    <a class="govuk-link" href="{{ org.base_path }}">{{ org.title }}</a>
+                  {% endfor %}
+                </dd>
+                <dt class="gem-c-metadata__term">Published</dt>
+                <dd class="gem-c-metadata__definition">{{ metadata.first_published }}</dd>
+                {% if metadata.last_updated %}
+                  <dt class="gem-c-metadata__term">Last updated</dt>
+                  <dd class="gem-c-metadata__definition">
+                    {{ metadata.last_updated }}
+                    {% if history.length %}
+                      — <a href="#history" class="gem-c-metadata__definition-link govuk-!-display-none-print">
+                        See all updates
+                      </a>
+                    {% endif %}
+                  </dd>
+                {% endif %}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% if contents_list.length %}
+            <nav class="gem-c-contents-list" aria-label="Contents" role="navigation">
+              <h2 class="gem-c-contents-list__title">Contents</h2>
+              <ol class="gem-c-contents-list__list">
+                {% for item in contents_list %}
+                  <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+                    <a class="gem-c-contents-list__link govuk-link govuk-link--no-underline" href="#{{ item.id }}">{{ item.text }}</a>
+                  </li>
+                {% endfor %}
+              </ol>
+            </nav>
+          {% endif %}
+
+          <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+              <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
+          </div>
+
+          {% if documents %}
+            <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Documents</h2>
+            <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+              {{ documents|safe }}
+            </div>
+
+            <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Details</h2>
+          {% endif %}
+          
+          <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+            {{ details|safe }}
+          </div>
+
+          <div class="app-c-published-dates app-c-published-dates--history" id="history" data-module="gem-toggle" lang="en">
+            Published {{ metadata.first_published }}
+            {% if metadata.last_updated %}
+              <br>Last updated {{ metadata.last_updated }}
+              {% if history.length %}
+                <a href="#full-history" class="app-c-published-dates__toggle govuk-link" data-controls="full-history" data-expanded="false" data-toggled-text="-&nbsp;hide all updates" role="button" aria-controls="full-history" aria-expanded="false">+&nbsp;show all updates</a>
+                <div class="app-c-published-dates__change-history js-hidden" id="full-history" aria-live="polite" role="region">
+                  <ol>
+                    {% for change in history %}
+                      <li class="app-c-published-dates__change-item">
+                        <time class="app-c-published-dates__change-date timestamp" datetime="{{ change.timestamp }}">{{ change.display_time }}</time>
+                        <p class="app-c-published-dates__change-note">{{ change.note }}</p>
+                      </li>
+                    {% endfor %}
+                  </ol>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+              <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="gem-c-contextual-sidebar">
+            {% if part_of.length %}
+              <div class="gem-c-step-nav-related" data-component-name="step-nav-related">
+                <h2 class="gem-c-step-nav-related__heading">
+                  <span class="gem-c-step-nav-related__pretitle">Part of</span>
+                </h2>
+                <ul class="gem-c-step-nav-related__links">
+                  {% for item in part_of %}
+                    <li class="gem-c-step-nav-related__link-item">
+                      <a href="{{ item.base_path }}" class="govuk-link">
+                        {{item.title}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            {% if (related_content.length) or (detailed_guidance.length) or (collections.length) %}
+              <div class="gem-c-related-navigation">
+                {% if related_content.length %}
+                  <h2 id="related-nav-related_items" class="gem-c-related-navigation__main-heading">
+                    Related content
+                  </h2>
+                  <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_items" data-module="gem-toggle">
+                    <ul class="gem-c-related-navigation__link-list">
+                      {% for item in related_content %}
+                        <li class="gem-c-related-navigation__link">
+                          <a class="govuk-link gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar gem-c-related-navigation__section-link--other" href="{{ item.base_path }}">{{ item.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                {% endif %}
+
+                {% if detailed_guidance.length %}
+                  <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_guides" data-module="gem-toggle">
+                    <h3 id="related-nav-related_guides" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--sidebar">Detailed guidance</h3>
+                    <ul class="gem-c-related-navigation__link-list">
+                      {% for item in detailed_guidance %}
+                        <li class="gem-c-related-navigation__link">
+                          <a class="govuk-link gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar" href="{{ item.base_path }}">{{ item.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                {% endif %}
+
+                {% if collections.length %}
+                  <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-collections" data-module="gem-toggle">
+                    <h3 id="related-nav-collections" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--sidebar">Collection</h3>
+                    <ul class="gem-c-related-navigation__link-list">
+                      {% for item in collections %}
+                        <li class="gem-c-related-navigation__link">
+                          <a class="govuk-link gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar" href="{{ item.base_path }}">{{ item.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <div class="gem-c-contextual-sidebar__brexit-cta">
+              <h2 class="gem-c-contextual-sidebar__brexit-heading govuk-heading-s">Brexit</h2>
+              <p class="gem-c-contextual-sidebar__brexit-text govuk-body">
+                <a class="govuk-link" lang="en" href="/brexit">Check what you need to do</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if topic %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="gem-c-related-navigation">
+              <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-7bea9644" data-module="gem-toggle">
+                <h2 id="related-nav-topics-7bea9644" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+                <ul class="gem-c-related-navigation__link-list">
+                  <li class="gem-c-related-navigation__link">
+                    <a class="govuk-link gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer" href="{{ topic.base_path }}">
+                      {{ topic.title }}
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </main>
+{% endblock %}
