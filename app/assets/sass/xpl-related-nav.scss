@@ -1,0 +1,108 @@
+.xpl-related-nav {
+  background: govuk-colour("light-grey");
+  padding-bottom: govuk-spacing(6);
+
+  @include govuk-media-query($from: tablet) {
+    background: transparent;
+    padding-bottom: none;
+  }
+}
+
+.xpl-related-nav__head {
+  border-top: 5px solid govuk-colour("blue");
+
+  @include govuk-media-query($from: tablet) {
+    border-top: 2px solid govuk-colour("blue");
+  }
+}
+
+.xpl-related-nav__section {
+  margin-bottom: govuk-spacing(8);
+}
+
+.xpl-related-nav__heading {
+  margin: govuk-spacing(4) 0 govuk-spacing(4);
+}
+
+.xpl-related-nav__sub-heading {
+  padding: 0;
+  border: 0;
+}
+
+.xpl-related-nav__link {
+  margin-top: govuk-spacing(4);
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(3);
+  }
+}
+
+.xpl-related-nav__toggle {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  @include govuk-font(16);
+  color: govuk-colour("blue");
+  cursor: pointer;
+
+  &:hover {
+    .xpl-related-nav__toggle-chevron {
+      color: govuk-colour("blue");
+      background: govuk-colour("blue");
+
+      &:after {
+        color: govuk-colour("white");
+      }
+    }
+
+    .xpl-related-nav__toggle-text {
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 0.15em;
+    }
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
+
+  &:focus:hover {
+    .xpl-related-nav__toggle-chevron {
+      color: govuk-colour("black");
+      background: govuk-colour("black");
+
+      &:after {
+        color: govuk-colour("yellow");
+      }
+    }
+  }
+}
+
+.xpl-related-nav__toggle-chevron {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: govuk-px-to-rem(20px);
+  height: govuk-px-to-rem(20px);
+  border: govuk-px-to-rem(1px) solid;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+
+  &:after {
+    content: "";
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    bottom: govuk-px-to-rem(5px);
+    left: govuk-px-to-rem(6px);
+    width: govuk-px-to-rem(6px);
+    height: govuk-px-to-rem(6px);
+    transform: rotate(-45deg);
+    border-top: govuk-px-to-rem(2px) solid;
+    border-right: govuk-px-to-rem(2px) solid;
+  }
+}
+
+.xpl-related-nav__toggle-chevron--down {
+  transform: rotate(180deg);
+}

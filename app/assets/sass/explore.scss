@@ -38,6 +38,7 @@ $wide-width: 1300px;
 
 
 .explore-page {
+  margin-bottom: 50px;
 
   // check with non-explore pages
 
@@ -463,9 +464,9 @@ $wide-width: 1300px;
     margin-bottom: 0;
   }
 
-  footer {
-    margin-top: 50px;
-  }
+  // footer {
+  //   margin-top: 50px;
+  // }
 
   // Override footer links
   #footer {

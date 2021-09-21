@@ -124,10 +124,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   GemToggle.prototype.getTargetElements = function () {
-    var ids = this.$module.toggleTrigger.getAttribute('aria-controls').split(' ')
-    var selector = '#' + ids.join(', #')
-
-    return this.$module.querySelectorAll(selector)
+    var selector = this.$module.toggleTrigger.getAttribute('aria-controls')
+    return this.$module.querySelectorAll('[data-toggle-target="' + selector + '"]')
   }
 
   GemToggle.prototype.toggleOnClick = function () {
@@ -150,10 +148,25 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       var toggledText = this.getAttribute('data-toggled-text')
+      var buttonMode = this.getAttribute('data-button')
 
       if (typeof toggledText === 'string') {
         this.setAttribute('data-toggled-text', this.innerText)
-        this.innerText = toggledText
+
+        if (buttonMode) {
+          var chevron = this.querySelector('.js-toggle-button-chevron')
+          var text = this.querySelector('.js-toggle-button-text')
+          
+          if (expanded) {
+            chevron.classList.add('xpl-related-nav__toggle-chevron--down')
+          } else {
+            chevron.classList.remove('xpl-related-nav__toggle-chevron--down')
+          }
+
+          text.innerText = toggledText
+        } else {
+          this.innerText = toggledText
+        }
       }
 
       if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && that.$module.isTrackable) {
