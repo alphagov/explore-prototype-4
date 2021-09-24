@@ -98,13 +98,24 @@
             <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
               {{ documents|safe }}
             </div>
-
-            <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Details</h2>
           {% endif %}
-          
-          <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
-            {{ details|safe }}
-          </div>
+
+          {% if (details|isArray) %}
+            {% for item in details %}
+              <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin" id="{{item.slug}}">{{item.title}}</h2>
+              <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+                {{ item.body|safe }}
+              </div>
+            {% endfor %}
+          {% else %}
+            {% if documents %}
+              <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Details</h2>
+            {% endif %}
+            
+            <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+              {{ details|safe }}
+            </div>
+          {% endif %}
 
           <div class="app-c-published-dates app-c-published-dates--history" id="history" data-module="gem-toggle" lang="en">
             Published {{ metadata.first_published }}
