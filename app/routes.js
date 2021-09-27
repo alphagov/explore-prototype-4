@@ -182,7 +182,7 @@ router.get('/*', function (req,res) {
   const contentApiUrl = `https://www.gov.uk/api/content/${originalUrl}`
   request(contentApiUrl, { json: true }, (error, result, body) => {
     if (error) throw error
-    const contentType = body.document_type
+    const contentType = body.schema_name
     
     if (supportedDocumentTypes.includes(contentType)) {
       const protoApiUrl = `${API_URL}/generic?slug=${originalUrl}`
