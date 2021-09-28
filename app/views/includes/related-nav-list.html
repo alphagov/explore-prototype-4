@@ -1,21 +1,21 @@
 {% macro list(options) %}
   <ul class="gem-c-related-navigation__link-list">
     {% for item in options.items %}
-      {% if loop.index <= 5 or items.length <= 6 %}
+      {% if loop.index <= 3 or items.length <= 4 %}
         <li class="gem-c-related-navigation__link xpl-related-nav__link">
           <a class="govuk-link gem-c-related-navigation__section-link" href="{{ item.base_path }}">{{ item.title }}</a>
         </li>
       {% else %}
-        {% if loop.index == 6 %}
+        {% if loop.index == 4 %}
           <li class="gem-c-related-navigation__link xpl-related-nav__link">
-            <button class="xpl-related-nav__toggle" data-controls="toggle_haha" data-expanded="false" data-toggled-text="Show fewer" data-button="true">
+            <button class="xpl-related-nav__toggle" data-controls="toggle_related_nav_{{ options.pluralName }}" data-expanded="false" data-toggled-text="Fewer {{ options.pluralName }}" data-button="true">
               <span class="xpl-related-nav__toggle-chevron xpl-related-nav__toggle-chevron--down js-toggle-button-chevron"></span>
               <span class="xpl-related-nav__toggle-text js-toggle-button-text">More {{ options.pluralName }}</span>
             </button>
           </li>
         {% endif %}
 
-        <li class="gem-c-related-navigation__link xpl-related-nav__link js-hidden" data-toggle-target="toggle_haha">
+        <li class="gem-c-related-navigation__link xpl-related-nav__link js-hidden" data-toggle-target="toggle_related_nav_{{ options.pluralName }}">
           <a class="govuk-link gem-c-related-navigation__section-link" href="{{ item.base_path }}">{{ item.title }}</a>
         </li>
       {% endif %}

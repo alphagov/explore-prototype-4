@@ -41,6 +41,7 @@
   border: 0;
   background: transparent;
   padding: 0;
+  margin: govuk-spacing(2) 0;
   @include govuk-font(16);
   color: govuk-colour("blue");
   cursor: pointer;
@@ -67,6 +68,10 @@
   }
 
   &:focus:hover {
+    .xpl-related-nav__toggle-text {
+      text-decoration: none;
+    }
+
     .xpl-related-nav__toggle-chevron {
       color: govuk-colour("black");
       background: govuk-colour("black");
