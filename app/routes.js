@@ -172,10 +172,11 @@ const govUkUrl = function (req) {
 router.get('/*', function (req,res) {
   const supportedDocumentTypes = [
     'detailed_guide',
-    'guidance',
+    'document_collection',
     'guide',
+    'html_publication',
+    'local_transaction',
     'publication',
-    'statutory_guidance',
   ]
   const originalUrl = req.originalUrl
 
