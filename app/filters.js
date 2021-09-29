@@ -38,8 +38,13 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
+  filters.isArray = function(a) {
+    return Array.isArray(a)
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
   return filters
 }
