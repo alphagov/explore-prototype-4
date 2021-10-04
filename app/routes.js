@@ -186,11 +186,12 @@ router.get('/*', function (req,res) {
     const contentType = body.schema_name
     
     if (supportedDocumentTypes.includes(contentType)) {
-      const protoApiUrl = `${API_URL}/generic?slug=${originalUrl}`
+      const isHtmlPub = contentType === 'html_publication'
+      const protoApiUrl = `${API_URL}/generic?slug=${originalUrl}&htmlpub=${isHtmlPub}`
 
       request(protoApiUrl, { json: true }, (error, result, body) => {
         if (error) throw error
-        res.render('generic_template', body)
+        res.render((isHtmlPub ? 'html_publication' : 'generic_template'), body)
       })
     } else {
       request(govUkUrl(req), function (error, response, body) {
