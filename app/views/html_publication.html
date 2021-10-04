@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }} - GOV.UK
+{% endblock %}
+
+{% block main %}
+  <main id="content" role="main" class="xpl-detailed-guide">
+    <div class="xpl-breadcrumbs">
+      <div class="govuk-width-container xpl-breadcrumbs__inner govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile">
+        <ol class="govuk-breadcrumbs__list">
+          <li class="xpl-breadcrumbs__list-item govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link xpl-breadcrumbs__link" href="/">Home</a>
+          </li>
+          {% if breadcrumbs %}
+            {% for crumb in breadcrumbs %}
+              <li class="xpl-breadcrumbs__list-item govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link xpl-breadcrumbs__link" href="{{ crumb.base_path }}">{{ crumb.title }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ol>
+      </div>
+    </div>
+
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="xpl-part-of">
+            <span class="xpl-part-of__label">Part of</span>
+            <a href="{{ part_of_parent.base_path }}" class="xpl-part-of__link govuk-link">
+              {{ part_of_parent.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="gem-c-inverse-header gem-c-inverse-header--padding-top govuk-!-margin-bottom-0">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-three-quarters">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ title }}</h1>
+                <p class="lede govuk-body-l govuk-!-margin-bottom-4">
+                  {% if context %}
+                    <strong>{{context}}</strong>
+                  {% endif %}
+                </p>
+                <p class="govuk-body-l govuk-!-margin-bottom-4">
+                  Published {{ metadata.first_published }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="xpl-org-logos">
+            <ul class="organisation-logos">
+              <li class="organisation-logos__logo">      
+                <div class="gem-c-organisation-logo brand--department-for-communities-and-local-government" data-component-name="organisation-logo" data-app-name="gem-c-">
+                    <a class="gem-c-organisation-logo__container gem-c-organisation-logo__link gem-c-organisation-logo__crest gem-c-organisation-logo__crest--single-identity brand__border-color" href="/government/organisations/building-regulations-advisory-committee">
+                      <span class="gem-c-organisation-logo__name">Building Regulations <br>Advisory Committee</span>
+                </a>
+                </div>
+              </li>
+              <li class="organisation-logos__logo">    
+                <div class="gem-c-organisation-logo brand--department-for-communities-and-local-government" data-component-name="organisation-logo" data-app-name="gem-c-">
+                    <a class="gem-c-organisation-logo__container gem-c-organisation-logo__link gem-c-organisation-logo__crest gem-c-organisation-logo__crest--single-identity brand__border-color" href="/government/organisations/ministry-of-housing-communities-and-local-government">
+                      <span class="gem-c-organisation-logo__name">Ministry of Housing,<br>Communities &amp;<br>Local Government</span>
+                </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter-from-desktop">
+          {% if contents_list.length %}
+            <nav class="gem-c-contents-list" aria-label="Contents" role="navigation">
+              <h2 class="gem-c-contents-list__title">Contents</h2>
+              <ol class="gem-c-contents-list__list">
+                {% for item in contents_list %}
+                  <li class="gem-c-contents-list__list-item">
+                    <a class="gem-c-contents-list__link govuk-link govuk-link--no-underline" href="#{{ item.id }}">{{ item.text }}</a>
+                  </li>
+                {% endfor %}
+              </ol>
+            </nav>
+          {% endif %}
+        </div>
+        <div class="govuk-grid-column-three-quarters-from-desktop">
+          <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+            {{ details|safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

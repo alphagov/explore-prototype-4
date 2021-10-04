@@ -9,7 +9,9 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Patterns that aren't in Frontend
 @import "patterns/contents-list";
+@import "patterns/inverse-header";
 @import "patterns/metadata";
+@import "patterns/org-logo";
 @import "patterns/print-link";
 @import "patterns/published-dates";
 @import "patterns/step-by-step-header";
@@ -335,5 +337,6 @@ img {
 @import "xpl-tabs";
 @import "xpl-cards";
 @import "xpl-breadcrumbs";
+@import "xpl-org-logos";
 @import "xpl-part-of";
 @import "xpl-related-nav";
