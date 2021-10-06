@@ -95,7 +95,7 @@
               </ol>
             </nav>
           {% endif %}
-
+            
           {% if documents %}
             <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Documents</h2>
             <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
@@ -118,6 +118,72 @@
             <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
               {{ details|safe }}
             </div>
+          {% endif %}
+
+          {% if intro %}
+            <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+              {{ intro|safe }}
+            </div>
+          {% endif %}
+
+          {% if show_form %}
+            <form method="post" id="local-locator-form" class="location-form govuk-!-margin-bottom-9">
+              <fieldset class="govuk-fieldset">
+                <legend class=" govuk-fieldset__legend govuk-visually-hidden">Postcode lookup</legend>
+                <div class="govuk-form-group">       
+                  <label for="postcode" class="gem-c-label govuk-label">Enter a postcode</label>   
+                  <div class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
+                    For example SW1A 2AA
+                  </div>
+                  <input name="postcode" class="gem-c-input govuk-input" id="postcode" type="text" autocomplete="postal-code" aria-describedby="hint-00ba0c67">
+                </div>
+                <button class="gem-c-button govuk-button gem-c-button--bottom-margin" type="submit">Find</button>
+                <p class="govuk-body"><a id="postcode-finder-link" class="govuk-link" rel="external" href="https://www.royalmail.com/find-a-postcode">Find a postcode on Royal Mail's postcode finder</a></p>
+              </fieldset>
+            </form>
+          {% endif %}
+
+          {% if need_to_know %}
+            <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">What you need to know</h2>
+            <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
+              {{ need_to_know|safe }}
+            </div>
+          {% endif %}
+
+          {% if main_document %}
+            <h2 class="govuk-heading-m govuk-!-padding-0 govuk-!-margin-top-8 govuk-!-margin-bottom-4">{{ main_document.title }}</h2>
+            <ul class="gem-c-document-list">
+              <li class="gem-c-document-list__item">
+                <a class="gem-c-document-list__item-title govuk-link" href="{{ main_document.base_path }}">{{ main_document.title }}</a>
+                  <ul class="gem-c-document-list__item-metadata">
+                    <li class="gem-c-document-list__attribute">
+                      <time datetime="{{ main_document.public_updated_at }}">
+                        {{ main_document.formatted_date }}
+                      </time>
+                    </li>
+                    <li class="gem-c-document-list__attribute">{{ main_document.attribute }}</li>
+                  </ul>
+              </li>
+            </ul>
+          {% endif %}
+
+          {% if archived_documents %}
+            <h2 class="govuk-heading-m govuk-!-padding-0 govuk-!-margin-top-8 govuk-!-margin-bottom-4">Archived documents</h2>
+            {% for doc in archived_documents %}
+              <ul class="gem-c-document-list">
+                <li class="gem-c-document-list__item">
+                  <a class="gem-c-document-list__item-title govuk-link" href="{{ doc.base_path }}">{{ doc.title }}</a>
+                    <ul class="gem-c-document-list__item-metadata">
+                      <li class="gem-c-document-list__attribute">
+                        <time datetime="{{ doc.public_updated_at }}">
+                          {{ doc.formatted_date }}
+                        </time>
+                      </li>
+                      <li class="gem-c-document-list__attribute">{{ doc.attribute }}</li>
+                    </ul>
+                </li>
+              </ul>
+            {% endfor %}
           {% endif %}
 
           <div class="app-c-published-dates app-c-published-dates--history" id="history" data-module="gem-toggle" lang="en">
