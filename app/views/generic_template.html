@@ -40,7 +40,7 @@
         <div class="govuk-grid-column-two-thirds">
           {% if part_of_taxon %}
             <h2 class="xpl-part-of">
-              <span class="xpl-part-of__label">Part of collection</span>
+              <span class="xpl-part-of__label">Part of</span>
               <a href="{{ part_of_taxon.base_path }}" class="xpl-part-of__link govuk-link">
                 {{ part_of_taxon.title }}
               </a>
@@ -236,14 +236,21 @@
                   </nav>
                 {% endif %}
 
-                {% if (detailed_guidance.length) or (collections.length) %}
+                {% if (step_by_step.length) or (topical_events.length) or (collections.length) or (topics.length) %}
                   <h2 class="gem-c-related-navigation__main-heading xpl-related-nav__heading">
                     Also part of
                   </h2>
-                  {% if detailed_guidance.length %}
-                    <nav role="navigation" class="gem-c-related-navigation__nav-section xpl-related-nav__section" aria-labelledby="related-nav-related_guides" data-module="gem-toggle">
-                      <h3 id="related-nav-related_guides" class="gem-c-related-navigation__sub-heading xpl-related-nav__sub-heading">Detailed guidance</h3>
-                      {{ relatedNav.list({items: detailed_guidance, pluralName: "detailed guidance"}) }}
+                  {% if step_by_step.length %}
+                    <nav role="navigation" class="gem-c-related-navigation__nav-section xpl-related-nav__section" aria-labelledby="related-nav-step-by-step" data-module="gem-toggle">
+                      <h3 id="related-nav-step-by-step" class="gem-c-related-navigation__sub-heading xpl-related-nav__sub-heading">Step by steps</h3>
+                      {{ relatedNav.list({items: step_by_step, pluralName: "step by steps"}) }}
+                    </nav>
+                  {% endif %}
+
+                  {% if topical_events.length %}
+                    <nav role="navigation" class="gem-c-related-navigation__nav-section xpl-related-nav__section" aria-labelledby="related-nav-topical-events" data-module="gem-toggle">
+                      <h3 id="related-nav-topical-events" class="gem-c-related-navigation__sub-heading xpl-related-nav__sub-heading">Topical events</h3>
+                      {{ relatedNav.list({items: topical_events, pluralName: "topical events"}) }}
                     </nav>
                   {% endif %}
 
@@ -251,6 +258,13 @@
                     <nav role="navigation" class="gem-c-related-navigation__nav-section xpl-related-nav__section" aria-labelledby="related-nav-collections" data-module="gem-toggle">
                       <h3 id="related-nav-collections" class="gem-c-related-navigation__sub-heading xpl-related-nav__sub-heading">Collection</h3>
                       {{ relatedNav.list({items: collections, pluralName: "collections"}) }}
+                    </nav>
+                  {% endif %}
+
+                  {% if topics.length %}
+                    <nav role="navigation" class="gem-c-related-navigation__nav-section xpl-related-nav__section" aria-labelledby="related-nav-topics" data-module="gem-toggle">
+                      <h3 id="related-nav-topics" class="gem-c-related-navigation__sub-heading xpl-related-nav__sub-heading">Topics</h3>
+                      {{ relatedNav.list({items: topics, pluralName: "topics"}) }}
                     </nav>
                   {% endif %}
                 {% endif %}
