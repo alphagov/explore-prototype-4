@@ -60,6 +60,15 @@
               </ul>
             {% endif %}
 
+            {% if detailed_guidance %}
+              <h2 class="govuk-heading-m">Detailed guidance</h2>
+              <ul class="govuk-list xpl-subsubtopics">
+                {% for guidance in detailed_guidance %}
+                  <li><a href="{{ guidance.base_path }}">{{ guidance.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
             {% if related_topics|length > 0 %}
               <h2 class="govuk-heading-m">Related topics</h2>
               <div class="topic-tags">
