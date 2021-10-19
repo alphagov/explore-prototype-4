@@ -48,17 +48,19 @@
           {% endif %}
 
           <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-8 govuk-!-padding-top-0">{{ title }}</h1>
-          <p class="lede govuk-body-l">
-            {% if context %}
-              <strong>{{context}}</strong>
-              {% if not is_consultation %}
-                &mdash;
+          {% if not is_mainstream_guide %}
+            <p class="lede govuk-body-l">
+              {% if context %}
+                <strong>{{context}}</strong>
+                {% if not is_consultation %}
+                  &mdash;
+                {% endif %}
               {% endif %}
-            {% endif %}
-            {% if not is_consultation %}
-              {{ description }}
-            {% endif %}
-          </p>
+              {% if not is_consultation %}
+                {{ description }}
+              {% endif %}
+            </p>
+          {% endif %}
         </div>
       </div>
       
@@ -94,7 +96,13 @@
               <ol class="gem-c-contents-list__list">
                 {% for item in contents_list %}
                   <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
-                    <a class="gem-c-contents-list__link govuk-link govuk-link--no-underline" href="#{{ item.id }}">{{ item.text }}</a>
+                    {% if item.id %}
+                      <a class="gem-c-contents-list__link govuk-link govuk-link--no-underline" href="#{{ item.id }}">{{ item.text }}</a>
+                    {% elif item.is_current_page %}
+                      {{ item.text }}
+                    {% else %}
+                      <a class="gem-c-contents-list__link govuk-link govuk-link" href="{{ item.slug }}">{{ item.text }}</a>
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ol>
@@ -148,7 +156,7 @@
             {% if documents %}
               <h2 class="gem-c-heading gem-c-heading--font-size-27 gem-c-heading--mobile-top-margin">Details</h2>
             {% endif %}
-            
+
             <div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">
               {{ details|safe }}
             </div>
