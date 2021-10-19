@@ -139,13 +139,6 @@ router.get('/', function (req, res) {
 // If content is an "end of journey" content type, return the generic content template
 // Otherwise, modify the body of all pages returned from gov.uk to add the Explore elements
 const augmentedBody = function (req, response, body) {
-  const headerTemplate = fs.readFileSync('app/views/explore-header.html', 'utf8')
-  const headerString = nunjucks.renderString(headerTemplate, {req})
-  const headerStringWithCss = `
-  <link href="/public/stylesheets/explore-header.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/public/stylesheets/explore-govuk-overrides.css" media="all" rel="stylesheet" type="text/css" />
-  ` + headerString
-
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
 
   // Make all src and ref attributes absolute, or the server will try to
@@ -153,12 +146,10 @@ const augmentedBody = function (req, response, body) {
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<body( class=")*?/, '<body class="explore-body"')
-    .replace(/<header[^]+?<\/header>/, headerStringWithCss)
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
     .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
-    .replace(/<\/body>/,'<script src="/public/javascripts/explore-header.js"></script>\n</body>')
     .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g,'<a $1 href=$2/')
 }
 
