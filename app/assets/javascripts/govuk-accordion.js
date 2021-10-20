@@ -1,7 +1,15 @@
-/* global nodeListForEach */
 //  = require ../vendor/polyfills/closest.js
 //  = require ../vendor/polyfills/indexOf.js
 //  = require ../vendor/polyfills/common.js
+
+function nodeListForEach (nodes, callback) {
+  if (window.NodeList.prototype.forEach) {
+    return nodes.forEach(callback)
+  }
+  for (var i = 0; i < nodes.length; i++) {
+    callback.call(window, nodes[i], i, nodes);
+  }
+}
 
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
