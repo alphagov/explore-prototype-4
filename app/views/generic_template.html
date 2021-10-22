@@ -66,29 +66,31 @@
       
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <div class="gem-c-metadata" data-module="gem-toggle">
-            <dl>
-              <dt class="gem-c-metadata__term">From:</dt>
-              <dd class="gem-c-metadata__definition">
-                {% for org in metadata.from %}
-                  <a class="govuk-link" href="{{ org.base_path }}">{{ org.title }}</a>
-                {% endfor %}
-              </dd>
-              <dt class="gem-c-metadata__term">Published</dt>
-              <dd class="gem-c-metadata__definition">{{ metadata.first_published }}</dd>
-              {% if metadata.last_updated %}
-                <dt class="gem-c-metadata__term">Last updated</dt>
+          {% if not details|isArray %}
+            <div class="gem-c-metadata" data-module="gem-toggle">
+              <dl>
+                <dt class="gem-c-metadata__term">From:</dt>
                 <dd class="gem-c-metadata__definition">
-                  {{ metadata.last_updated }}
-                  {% if history.length %}
-                    — <a href="#history" class="gem-c-metadata__definition-link govuk-!-display-none-print">
-                      See all updates
-                    </a>
-                  {% endif %}
+                  {% for org in metadata.from %}
+                    <a class="govuk-link" href="{{ org.base_path }}">{{ org.title }}</a>
+                  {% endfor %}
                 </dd>
-              {% endif %}
-            </dl>
-          </div>
+                <dt class="gem-c-metadata__term">Published</dt>
+                <dd class="gem-c-metadata__definition">{{ metadata.first_published }}</dd>
+                {% if metadata.last_updated %}
+                  <dt class="gem-c-metadata__term">Last updated</dt>
+                  <dd class="gem-c-metadata__definition">
+                    {{ metadata.last_updated }}
+                    {% if history.length %}
+                      — <a href="#history" class="gem-c-metadata__definition-link govuk-!-display-none-print">
+                        See all updates
+                      </a>
+                    {% endif %}
+                  </dd>
+                {% endif %}
+              </dl>
+            </div>
+          {% endif %}
 
           {% if (contents_list.length) or (document_collections) %}
             <nav class="gem-c-contents-list" aria-label="Contents" role="navigation">
