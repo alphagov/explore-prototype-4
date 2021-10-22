@@ -48,7 +48,7 @@
           {% endif %}
 
           <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-8 govuk-!-padding-top-0">{{ title }}</h1>
-          {% if not is_mainstream_guide %}
+          {% if (not is_mainstream_guide) and (not show_form) %}
             <p class="lede govuk-body-l">
               {% if context %}
                 <strong>{{context}}</strong>
@@ -66,7 +66,7 @@
       
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          {% if not details|isArray %}
+          {% if (not details|isArray) and (not show_form) %}
             <div class="gem-c-metadata" data-module="gem-toggle">
               <dl>
                 <dt class="gem-c-metadata__term">From:</dt>
