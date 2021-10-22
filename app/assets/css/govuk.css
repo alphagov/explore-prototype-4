@@ -6129,7 +6129,7 @@
 }
 .gem-c-govspeak .help-notice {
  margin:2em 0;
- background-image:url(/assets/frontend/govuk_publishing_components/icon-important-c8e0ab886446b1b413613d020b48db54ff2521e091ac6fbc2e05af612bc2427b.svg);
+ background-image:url('/public/images/icon-important.svg');
  background-size:34px 34px;
  background-repeat:no-repeat;
  min-height:34px;
