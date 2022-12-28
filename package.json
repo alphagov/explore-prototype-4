@@ -39,7 +39,7 @@
     "keypather": "^3.0.0",
     "marked": "^3.0.7",
     "nodemon": "^2.0.4",
-    "notifications-node-client": "^4.7.2",
+    "notifications-node-client": "^6.0.0",
     "nunjucks": "^3.2.1",
     "portscanner": "^2.1.1",
     "rc": "1.2.8",
